@@ -1,0 +1,4 @@
+.env
+entitlements.json
+node_modules/
+*.log

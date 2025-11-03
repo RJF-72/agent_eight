@@ -1,0 +1,15 @@
+{
+  "name": "agent8-stripe-checkout",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Local Stripe Checkout server for Agent 8 subscription tiers",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "stripe": "^19.2.0"
+  }
+}

@@ -5,6 +5,8 @@
   "version": "0.0.1",
   "publisher": "RJF-72",
   "icon": "icon.png",
+  "author": "Redemption Road (Dual Proprietorship: Ray Flanary and Joni Marie Flanary)",
+  "license": "LicenseRef-RedemptionRoad-Proprietary",
   "engines": {
     "vscode": "^1.105.0"
   },
@@ -12,12 +14,40 @@
     "Other"
   ],
   "activationEvents": [
+    "onStartupFinished",
     "onCommand:agent-8.helloWorld",
     "onCommand:agent-8.startVoice",
-    "onCommand:agent-8.stopVoice"
+    "onCommand:agent-8.stopVoice",
+    "onCommand:agent-8.signIn"
   ],
   "main": "./out/extension.js",
   "contributes": {
+    "configuration": {
+      "title": "Agent 8 Settings",
+      "properties": {
+        "agent8.billing.serverUrl": {
+          "type": "string",
+          "default": "http://localhost:4242",
+          "description": "Base URL of your local billing server used for sign-in and entitlement checks."
+        },
+        "agent8.speech.provider": {
+          "type": "string",
+          "enum": ["whisperServer"],
+          "default": "whisperServer",
+          "description": "Open‑source provider to use for speech recognition. Default uses a local Whisper HTTP server."
+        },
+        "agent8.speech.whisperServerUrl": {
+          "type": "string",
+          "default": "http://localhost:3000/transcribe",
+          "description": "URL of your local Whisper server endpoint that returns a transcript (JSON { text } or plain text)."
+        },
+        "agent8.speech.pollIntervalMs": {
+          "type": "number",
+          "default": 2000,
+          "description": "Polling interval (ms) used by recognizers that stream transcripts (reserved for future use)."
+        }
+      }
+    },
     "commands": [
       {
         "command": "agent-8.helloWorld",
@@ -30,6 +60,10 @@
       {
         "command": "agent-8.stopVoice",
         "title": "Agent 8: Stop Voice Recognition"
+      },
+      {
+        "command": "agent-8.signIn",
+        "title": "Agent 8: Sign In"
       }
     ]
   },

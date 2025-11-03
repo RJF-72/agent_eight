@@ -67,4 +67,6 @@ Icon
 - The extension icon is icon.png at the project root.
 
 License
-- License to be determined by the publisher. If you add a license file, update package.json accordingly.
+- Redemption Road Proprietary License v1.0. All rights reserved.
+- Copyright (c) 2025 Redemption Road — Owners: Ray Flanary and Joni Marie Flanary (Dual Proprietorship).
+- See LICENSE.md and COPYRIGHT for details.

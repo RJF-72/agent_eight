@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Agent 8 Plans</title>
+    <style>
+      :root { --primary:#1f6feb; --bg:#0d1117; --card:#161b22; --border:#30363d; --text:#c9d1d9; --muted:#8b949e; }
+      body { font-family: system-ui, sans-serif; margin: 2rem; background: var(--bg); color: var(--text); }
+      .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
+      .card { border: 1px solid var(--border); padding: 1rem; border-radius: 12px; background: var(--card); box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+      h1 { margin-bottom: 1rem; }
+      button { padding: 0.6rem 1rem; border: none; border-radius: 8px; background: var(--primary); color: white; cursor: pointer; }
+      button:hover { filter: brightness(1.1); }
+      .price { font-weight: bold; font-size: 1.25rem; margin: 0.5rem 0; }
+      ul { margin: 0.5rem 0 0 1rem; color: var(--muted); }
+      .tier { display:flex; align-items:center; gap:0.5rem; }
+      .badge { background:#238636; color:white; border-radius:999px; font-size:0.8rem; padding:0.1rem 0.6rem; }
+    </style>
+  </head>
+  <body>
+    <h1>Choose your Agent 8 plan</h1>
+    <div class="grid">
+      <div class="card">
+        <div class="tier"><h3>Bronze 8</h3> <span class="badge">Starter</span></div>
+        <div class="price">$9.99 / month</div>
+        <ul>
+          <li>Basic voice-to-code commands</li>
+          <li>Local Whisper server integration</li>
+          <li>Email-based entitlement</li>
+        </ul>
+        <button onclick="checkout('bronze8')">Subscribe</button>
+      </div>
+      <div class="card">
+        <div class="tier"><h3>Silver 8</h3> <span class="badge">Core</span></div>
+        <div class="price">$15.99 / month</div>
+        <ul>
+          <li>Everything in Bronze</li>
+          <li>Priority polling and faster recognizer</li>
+          <li>Basic command customization</li>
+        </ul>
+        <button onclick="checkout('silver8')">Subscribe</button>
+      </div>
+      <div class="card">
+        <div class="tier"><h3>Gold 8</h3> <span class="badge">Popular</span></div>
+        <div class="price">$21.99 / month</div>
+        <ul>
+          <li>Everything in Silver</li>
+          <li>Advanced code actions and templates</li>
+          <li>Extended session durations</li>
+        </ul>
+        <button onclick="checkout('gold8')">Subscribe</button>
+      </div>
+      <div class="card">
+        <div class="tier"><h3>Platinum 8</h3> <span class="badge">Pro</span></div>
+        <div class="price">$27.99 / month</div>
+        <ul>
+          <li>Everything in Gold</li>
+          <li>Team features and shared presets</li>
+          <li>Early access to new modules</li>
+        </ul>
+        <button onclick="checkout('platinum8')">Subscribe</button>
+      </div>
+      <div class="card">
+        <div class="tier"><h3>Diamond 8</h3> <span class="badge">Enterprise</span></div>
+        <div class="price">$59.99 / month</div>
+        <ul>
+          <li>Everything in Platinum</li>
+          <li>Premium support & SLA</li>
+          <li>Custom integrations</li>
+        </ul>
+        <button onclick="checkout('diamond8')">Subscribe</button>
+      </div>
+    </div>
+    <script>
+      async function checkout(tierKey) {
+        try {
+          const res = await fetch('/create-checkout-session', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ tierKey })
+          });
+          const data = await res.json();
+          if (data && data.url) {
+            window.location.href = data.url;
+          } else {
+            alert('Failed to create Checkout session');
+          }
+        } catch (e) {
+          console.error(e);
+          alert('Error creating Checkout session');
+        }
+      }
+    </script>
+  </body>
+</html>
