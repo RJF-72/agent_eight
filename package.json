@@ -2,11 +2,19 @@
   "name": "agent-8",
   "displayName": "Agent 8",
   "description": "Agent 8 - Open VSX extension",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "publisher": "RJF-72",
   "icon": "icon.png",
   "author": "Redemption Road (Dual Proprietorship: Ray Flanary and Joni Marie Flanary)",
   "license": "LicenseRef-RedemptionRoad-Proprietary",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RJF-72/agent_eight.git"
+  },
+  "homepage": "https://github.com/RJF-72/agent_eight",
+  "bugs": {
+    "url": "https://github.com/RJF-72/agent_eight/issues"
+  },
   "engines": {
     "vscode": "^1.105.0"
   },
@@ -32,7 +40,9 @@
         },
         "agent8.speech.provider": {
           "type": "string",
-          "enum": ["whisperServer"],
+          "enum": [
+            "whisperServer"
+          ],
           "default": "whisperServer",
           "description": "Open‑source provider to use for speech recognition. Default uses a local Whisper HTTP server."
         },
@@ -76,14 +86,16 @@
     "test": "vscode-test"
   },
   "devDependencies": {
-    "@types/vscode": "^1.105.0",
     "@types/mocha": "^10.0.10",
     "@types/node": "22.x",
+    "@types/vscode": "^1.105.0",
     "@typescript-eslint/eslint-plugin": "^8.45.0",
     "@typescript-eslint/parser": "^8.45.0",
-    "eslint": "^9.36.0",
-    "typescript": "^5.9.3",
     "@vscode/test-cli": "^0.0.11",
-    "@vscode/test-electron": "^2.5.2"
+    "@vscode/test-electron": "^2.5.2",
+    "@vscode/vsce": "^3.6.2",
+    "eslint": "^9.36.0",
+    "ovsx": "^0.10.6",
+    "typescript": "^5.9.3"
   }
 }
