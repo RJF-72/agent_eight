@@ -2,9 +2,9 @@
   "name": "agent-8",
   "displayName": "Agent 8",
   "description": "Agent 8 - Open VSX extension",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "publisher": "RJF-72",
-  "icon": "icon.png",
+  "icon": "images/icon.png",
   "author": "Redemption Road (Dual Proprietorship: Ray Flanary and Joni Marie Flanary)",
   "license": "LicenseRef-RedemptionRoad-Proprietary",
   "repository": {
